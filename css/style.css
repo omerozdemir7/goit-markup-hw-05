@@ -551,3 +551,89 @@ footer .container {
   fill: var(--cloud);
 }
 /* ===================== FOOTER SOCİAL END ===================== */
+
+
+/* ===================== FOOTER EMAİL İNPUT START ===================== */
+
+
+form {
+  width: 453px; /* İstersen form genişliği */
+  height: 80px;
+  display: flex;
+  align-items: center;     /* Input ve button aynı hizada */
+  gap: 12px;   
+  left: 340px;
+  top: -85px;
+  position: relative;
+}
+
+.email-input {
+  
+  color: var(--white);
+  font-weight: 600;
+  font-size: 14px;
+  width: 264px;
+}
+
+.email-input span {
+  
+  top: -20px;
+  position: relative;
+  line-height: 24px;
+  letter-spacing: 0.4px;
+  font-size: 16px;
+  font-family: var(--font-family);
+}
+
+.email-input input {
+  width: 100%;
+  height: 40px;
+  border-radius: 4px;
+  border: 1px solid var(--white);
+  background-color: transparent;
+  color: var(--white);
+  font-size: 14px;
+  filter: drop-shadow(0 4px 4px ) var(--white);
+  
+}
+
+
+
+.email-input input::placeholder{
+  width: 36px;
+  height: 24px;
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.4px;
+  left: 15px;
+  position: relative;
+}
+
+
+.footer button {
+  width: 165px;
+  height: 40px;
+  background-color: var(--iris);
+  color: var(--white);
+  border-radius: 4px;
+  border: none;
+  font-weight: 400;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;           /* İçindeki iconu ve yazıyı hizala */
+  align-items: center;
+  justify-content: center;
+  gap: 8px;    
+  font-family: var(--font-family); 
+  margin-top: 25px;  
+  padding: 8px 24px 8px 24px;        /* Buton içi ikon ile yazı arası */
+  margin-left: 10px;
+}
+
+.footer button svg.icon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;      /* Renk buton yazısı ile aynı olur */
+}
