@@ -1,639 +1,901 @@
 /* ===================== :ROOT START ===================== */
+/* Bu bölüm, projenin genelinde tekrar eden değerleri (renkler, fontlar vb.) tanımlayan CSS değişkenlerini (custom properties) içerir. 
+   Bu değişkenler, stil tutarlılığını sağlamak ve kolayca değişiklik yapmak için kullanılır. */
 :root {
-  --iris: #4d5ae5;
-  --ocean: #404bbf;
-  --navy-blue: #2e2f42;
-  --green: #31d0aa;
-  --slate: #434455;
-  --light-slate: #8e8f99;
-  --cornflower: #e7e9fc;
-  --cloud: #f4f4fd;
-  --navy-blue-modal: rgba(46, 47, 66, 0.4);
-  --grey: rgba(46, 47, 66, 0.7);
-  --white: #fff;
-  --dairy: #fcfcfc;
+  --iris: #4d5ae5; /* Ana vurgu rengi, genellikle etkileşimli öğeler (butonlar, linkler) için kullanılır. */
+  --ocean: #404bbf; /* Hover veya aktif durumlar için --iris renginin daha koyu bir tonu. */
+  --navy-blue: #2e2f42; /* Koyu lacivert, genellikle ana metin veya arka plan rengi olarak kullanılır. */
+  --green: #31d0aa; /* Yeşil tonu, başarı mesajları veya belirli vurgular için kullanılabilir. */
+  --slate: #434455; /* Gri-mavi tonu, ikincil metinler veya daha az vurgulu öğeler için uygundur. */
+  --light-slate: #8e8f99; /* Açık gri-mavi tonu, daha hafif metinler, sınırlar veya pasif durumlar için kullanılır. */
+  --cornflower: #e7e9fc; /* Çok açık mavi/mor tonu, arka planlar, sınırlar veya ayrıştırıcılar için kullanılır. */
+  --cloud: #f4f4fd; /* Çok açık gri/beyaz tonu, genellikle arka planlar için kullanılır. */
+  --navy-blue-modal: rgba(46, 47, 66, 0.4); /* Modal (açılır pencere) arka planı için yarı şeffaf lacivert. */
+  --grey: rgba(46, 47, 66, 0.7); /* Genel gri tonu, yarı şeffaf olarak tanımlanmıştır. */
+  --white: #fff; /* Tamamen beyaz renk. */
+  --dairy: #fcfcfc; /* Neredeyse beyaz, çok hafif bir gri tonu. */
 
-  --font-family: "Roboto", sans-serif;
-  --second-family: "Raleway", sans-serif;
+  --font-family: "Roboto", sans-serif; /* Projenin ana font ailesi, Roboto ve yedek olarak genel sans-serif. */
+  --second-family: "Raleway", sans-serif; /* İkincil font ailesi, genellikle logolar veya başlıklar gibi özel kullanımlar için. */
 }
 /* ===================== :ROOT END ===================== */
 
 /* ===================== BODY START ===================== */
+/* HTML belgesinin temel stillerini ve genel sıfırlama kurallarını tanımlar. */
 * {
-  margin: 0 auto;
-  padding: 0;
+  margin: 0 auto; /* Tüm elementlerin yatayda ortalanması için kullanılır, ancak `position: absolute` veya flexbox gibi durumlarda dikkatli kullanılmalıdır. */
+  padding: 0; /* Tüm HTML elementlerinin varsayılan iç boşluklarını (padding) sıfırlar. */
 }
 
 body,
 html {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
+  margin: 0; /* Sayfanın (body ve html elementlerinin) dış boşluklarını sıfırlar. */
+  padding: 0; /* Sayfanın (body ve html elementlerinin) iç boşluklarını sıfırlar. */
+  display: flex; /* `body` ve `html` elementlerini esnek kutu (flexbox) konteynerleri yapar. */
+  flex-direction: column; /* Esnek öğelerin dikey yönde (sütun olarak) sıralanmasını sağlar. */
+  font-family: var(--font-family); /* Root'ta tanımlanan ana font ailesini tüm sayfaya uygular. */
 }
 
 body {
-  padding-top: 72px;
-  box-sizing: border-box;
-  font-family: var(--font-family);
-  overflow-x: hidden;
-  height: auto;
+  padding-top: 72px; /* Navbar'ın yüksekliği kadar üstten iç boşluk bırakır, çünkü navbar `position: absolute` olduğu için normal akıştan çıkar. */
+  box-sizing: border-box; /* `padding` ve `border` değerlerinin elementin toplam genişliğine ve yüksekliğine dahil olmasını sağlar. */
+  font-family: var(--font-family); /* Font ailesini tekrar belirtir, genellikle redundant olsa da tarayıcı tutarlılığı için kullanılabilir. */
+  overflow-x: hidden; /* Yatayda oluşan kaydırma çubuğunu gizler, içeriğin yatayda taşmasını engeller. */
+  height: auto; /* `body` yüksekliğinin içeriğine göre otomatik olarak ayarlanmasını sağlar. */
 }
 /* ===================== BODY END ===================== */
 
 /* ===================== NAVBAR START ===================== */
+/* Navigasyon çubuğunun genel stil tanımlamaları. */
 .navbar-wrapper {
-  width: 100%;
-  height: 72px;
-  padding-left: 80px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  background-color: var(--white);
-  border-bottom: 1px solid rgba(231, 233, 252, 1);
+  width: 1550px !important; /* Navigasyon çubuğunun genişliğini sabitler ve !important ile diğer kuralları geçersiz kılar (genellikle tavsiye edilmez). */
+  height: 72px; /* Sabit yükseklik. */
+  padding-left: 80px; /* Navigasyon içeriğinin soldan iç boşluğu. */
+  position: absolute; /* Elementi normal belge akışından çıkarır ve belirli bir konuma yerleştirir. */
+  top: 0; /* Üst kenara hizalar. */
+  left: 0; /* Sol kenara hizalar. */
+  z-index: 1000; /* Elementin diğer öğelerin üzerinde görünmesini sağlar. Daha yüksek değerler daha üstte demektir. */
+  background-color: var(--white); /* Arka plan rengi beyazdır. */
+  border-bottom: 1px solid rgba(231, 233, 252, 1); /* Alt kenarlık, rengi tam opaklıkta cornflower'dır. */
 }
 
 .nav {
-  display: flex;
-  position: relative;
+  display: flex; /* Navigasyon içeriğini esnek kutu modeliyle düzenler. */
+  position: relative; /* İçindeki mutlak konumlandırılmış öğeler için referans noktası olur. */
 }
 
 .logo-header {
-  font-family: var(--second-family);
-  font-size: 18px;
-  font-weight: bold;
-  color: #4d5ae5;
-  text-decoration: none;
-  position: absolute;
-  top: 24px;
-  left: 156px;
-  margin: 0 auto;
+  font-family: var(--second-family); /* Logo metni için ikincil font ailesi. */
+  font-size: 18px; /* Logo font boyutu. */
+  font-weight: bold; /* Logo metni kalın. */
+  color: #4d5ae5; /* Logo metin rengi (iris). */
+  text-decoration: none; /* Logo linkinin alt çizgisini kaldırır. */
+  position: absolute; /* Mutlak konumlandırma. */
+  top: 24px; /* Üstten 24px aşağıda konumlandırır. */
+  left: 156px; /* Soldan 156px içeride konumlandırır. */
+  margin: 0 auto; /* Bu kural `position: absolute` ile birlikte genellikle etkisizdir. */
 }
 
 .logo-header span {
-  color: var(--navy-blue);
+  color: var(--navy-blue); /* Logo içindeki `span` elementinin rengini lacivert yapar. */
 }
 /* ===================== NAVBAR END ===================== */
 
 /* ===================== MENU START ===================== */
+/* Navigasyon menüsü linklerinin ve adres bilgilerinin stil tanımlamaları. */
 .menu {
-  list-style: none;
-  display: flex;
-  gap: 40px;
-  position: absolute;
-  left: 347px;
-  top: 24px;
+  list-style: none; /* Liste öğelerinin varsayılan işaretleyicilerini kaldırır. */
+  display: flex; /* Menü öğelerini yan yana esnek kutular olarak dizer. */
+  gap: 40px; /* Menü öğeleri arasında 40px boşluk bırakır. */
+  position: absolute; /* Mutlak konumlandırma. */
+  left: 347px; /* Soldan 347px içeride konumlandırır. */
+  top: 24px; /* Üstten 24px aşağıda konumlandırır. */
 }
 
 .menu li a {
-  font-family: var(--font-family);
-  font-weight: 500;
-  font-size: 16px;
-  color: var(--navy-blue);
-  text-decoration: none;
+  font-family: var(--font-family); /* Menü linkleri için ana font ailesi. */
+  font-weight: 500; /* Font kalınlığı. */
+  font-size: 16px; /* Font boyutu. */
+  color: var(--navy-blue); /* Metin rengi lacivert. */
+  text-decoration: none; /* Alt çizgiyi kaldırır. */
 }
 .menu li a.studio {
-  color: var(--ocean);
+  color: var(--ocean); /* 'studio' sınıfına sahip menü öğesinin rengini ocean yapar. */
 }
 .menu li a.studio::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 45px;
-
-  width: 48px;
-  height: 4px;
-  background-color: var(--ocean);
-  border-radius: 2px;
+  content: ""; /* Linkin altına bir pseudo-element (sözde öğe) oluşturur. */
+  position: absolute; /* Mutlak konumlandırma, `li a` elementine göre. */
+  left: 0; /* Kendi öğesinin soluna hizalar. */
+  top: 45px; /* Kendi öğesinden 45px aşağıda konumlandırır. */
+  width: 48px; /* Alt çizginin genişliği. */
+  height: 4px; /* Alt çizginin yüksekliği. */
+  background-color: var(--ocean); /* Alt çizginin rengi ocean. */
+  border-radius: 2px; /* Alt çizginin köşe yuvarlatması. */
 }
 .menu li a:hover {
-  color: var(--ocean);
+  color: var(--ocean); /* Fare üzerine gelindiğinde metin rengini ocean yapar. */
 }
 .menu .studio:active {
-  color: var(--ocean);
-  font-weight: bold;
+  color: var(--ocean); /* Aktif/tıklanmış durumda metin rengini ocean yapar. */
+  font-weight: bold; /* Aktif/tıklanmış durumda fontu kalın yapar. */
 }
 
 .address ul {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-  position: absolute;
-  left: 1133px;
-  top: 25px;
-  margin: 0 auto;
-  padding: 0;
+  display: flex; /* Adres listesi öğelerini yan yana esnek kutular olarak dizer. */
+  gap: 20px; /* Adres öğeleri arasında 20px boşluk bırakır. */
+  list-style: none; /* Liste işaretleyicilerini kaldırır. */
+  position: absolute; /* Mutlak konumlandırma. */
+  left: 1133px; /* Soldan 1133px içeride konumlandırır. */
+  top: 25px; /* Üstten 25px aşağıda konumlandırır. */
+  margin: 0 auto; /* Bu kural `position: absolute` ile birlikte genellikle etkisizdir. */
+  padding: 0; /* İç boşluğu sıfırlar. */
 }
 
 .address ul li a {
-  color: var(--slate);
-  text-decoration: none;
-  display: flex;
+  color: var(--slate); /* Metin rengi slate. */
+  text-decoration: none; /* Alt çizgiyi kaldırır. */
+  display: flex; /* İçerikleri (metin ve ikon gibi) hizalamak için esnek kutu modeli kullanır. */
 }
 .address ul li a:hover {
-  color: #404bbf;
+  color: #404bbf; /* Fare üzerine gelindiğinde metin rengini ocean yapar. */
 }
 /* ===================== MENU END ===================== */
 
 /* ===================== HERO-İMAGE START ===================== */
+/* Ana tanıtım görseli (hero section) stil tanımlamaları. */
 .hero-image {
-  background-color: var(--navy-blue);
-  width: 1440px;
-  padding: 0 50px;
-  height: 600px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  background-color: var(--navy-blue); /* Arka plan rengi lacivert. */
+ max-width: 1550px; /* Hero görselinin genişliğini sabitler ve !important ile diğer kuralları geçersiz kılar. */
+  padding: 0 50px; /* Yatayda iç boşluk. */
+  height: 600px; /* Sabit yükseklik. */
+  display: flex; /* İçeriği esnek kutu modeliyle düzenler. */
+  justify-content: center; /* Yatayda ortalar. */
+  align-items: center; /* Dikeyde ortalar. */
+  text-align: center; /* İçindeki metni ortalar. */
   background-image: linear-gradient(
-      rgba(46, 47, 66, 0.7),
-      rgba(46, 47, 66, 0.7)
+      rgba(46, 47, 66, 0.7), /* Koyu renk geçişinin başlangıcı (yarı şeffaf lacivert). */
+      rgba(46, 47, 66, 0.7) /* Koyu renk geçişinin sonu (yarı şeffaf lacivert). */
     ),
-    url(../images/background.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
+    url(../images/background.jpg); /* Arka plan görseli ve yolu. */
+  background-repeat: no-repeat; /* Görsel tekrarını engeller. */
+  background-size: cover; /* Görseli, oranlarını koruyarak alanı tamamen kaplayacak şekilde boyutlandırır. */
+  background-position: center; /* Görseli merkezler. */
+  /* width: 100%; /* Bu kural !important olan 1550px nedeniyle etkisiz kalır. */
+  box-sizing: border-box; /* Padding ve border'ın elementin toplam genişliğine dahil olmasını sağlar. */
 }
 
 .hero-image .container {
-  width: 1440px;
-  padding: 0 40px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  /* max-width: 1440px; /* Konteynerin maksimum genişliğini sınırlar. */
+  padding: 0 40px; /* Yatayda iç boşluk. */
+  margin: 0 auto; /* Yatayda ortalar. */
+  display: flex; /* İçeriği esnek kutu modeliyle düzenler. */
+  flex-direction: column; /* İçerikleri dikey yönde sıralar. */
+  align-items: center; /* Flex yönü dikey olduğu için yatayda ortalar. */
+  max-width: 1440px; /* Opsiyonel: Konteynerin maksimum genişliğini sınırlar. */
+  width: 100%; /* Tam genişlik (duyarlı). */
+  box-sizing: border-box; /* Padding ve border'ın genişliğe dahil olmasını sağlar. */
 }
 
 .hero-image .text {
-  color: var(--white);
-  font-size: 56px;
-  max-width: 496px;
-  margin: 0;
-  line-height: 1.2;
+  color: var(--white); /* Metin rengi beyaz. */
+  font-size: 56px; /* Font boyutu. */
+  max-width: 496px; /* Metnin maksimum genişliği. */
+  margin: 0; /* Dış boşluğu sıfırlar. */
+  line-height: 1.2; /* Satır yüksekliği. */
+  font-weight: 700; /* Font kalınlığı (bold). */
 }
 
-.container > button {
-  margin-top: 40px;
-  background-color: var(--iris);
-  color: var(--white);
-  padding: 16px 32px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 500;
-  font-size: 16px;
+/* "Order Service" düğmesinin (artık bir link) stil tanımlamaları. */
+.order-service-button {
+  margin-top: 40px; /* Üstten dış boşluk. */
+  background-color: var(--iris); /* Arka plan rengi iris. */
+  color: var(--white); /* Metin rengi beyaz. */
+  padding: 16px 32px; /* İç boşluk. */
+  border: none; /* Kenarlığı kaldırır. */
+  border-radius: 4px; /* Köşe yuvarlatması. */
+  cursor: pointer; /* Fare imleci üzerine gelince işaretçi olur. */
+  font-weight: 500; /* Font kalınlığı. */
+  font-size: 16px; /* Font boyutu. */
+  text-decoration: none; /* Linkin alt çizgisini kaldırır. */
+  display: inline-block; /* Block gibi davranır ancak metin akışı içinde kalır (padding/margin kabul eder). */
+  transition: background-color 0.3s ease; /* Arka plan rengi değişimine yumuşak geçiş efekti. */
 }
 
-.container > button:hover {
-  background-color: var(--ocean);
+.order-service-button:hover,
+.order-service-button:focus {
+  background-color: var(--ocean); /* Fare üzerine gelince veya odaklanınca arka plan rengi ocean olur. */
 }
 /* ===================== HERO-İMAG END ===================== */
 
-/* ===================== İCON BOX START ===================== */
+/* ===================== MODAL START ===================== */
+/* Modal (açılır pencere) ve arka planının stil tanımlamaları. */
+
+.modal {
+  display: none; /* Varsayılan olarak gizli. */
+  position: fixed; /* Ekranın belirli bir konumunda sabit kalır. */
+  inset: 0; /* top, right, bottom, left değerlerini 0 yapar, böylece tam ekranı kaplar. */
+  background: var(--navy-blue-modal); /* Yarı şeffaf arka plan (backdrop) rengi. */
+  justify-content: center; /* Flexbox ile yatayda içeriği ortalar. */
+  align-items: center; /* Flexbox ile dikeyde içeriği ortalar. */
+  z-index: 1000; /* Diğer öğelerin üzerinde görünmesini sağlar. */
+  opacity: 0; /* Başlangıçta tamamen şeffaf. */
+  visibility: hidden; /* Başlangıçta görünmez (etkileşimleri de engeller). */
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; /* Görünürlük ve şeffaflık değişimlerine yumuşak geçiş efekti. */
+}
+
+/* Modal, URL'deki hedef ID ile eşleştiğinde görünür olur (CSS-only modal tekniği). */
+.modal:target {
+  display: flex; /* Görünür hale getirir ve içeriği flex ile ortalar. */
+  opacity: 1; /* Tamamen opak hale gelir. */
+  visibility: visible; /* Görünür hale gelir. */
+}
+
+.modal-content {
+  background-color: #fff; /* Modal içeriğinin arka plan rengi beyaz. */
+  padding: 20px; /* İç boşluk. */
+  border-radius: 4px; /* Köşe yuvarlatması. */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti. */
+  position: relative; /* İçindeki öğelerin mutlak konumlandırmasına referans noktası olur. */
+  width: 408px; /* Sabit genişlik. */
+  height: 584px; /* Sabit yükseklik. */
+  margin-top: 40px; /* Üstten dış boşluk (bu, dikey ortalamayı bir miktar bozabilir). */
+  box-sizing: border-box; /* Padding ve border'ın elementin toplam genişliğine dahil olmasını sağlar. */
+  transform: translateY(-50px); /* Başlangıçta içeriği dikeyde 50px yukarı kaydırır (giriş animasyonu için). */
+  transition: transform 0.3s ease-out; /* Transformasyon değişimine yumuşak geçiş efekti. */
+}
+
+/* Modal görünür olduğunda (hedef alındığında) içeriği orijinal konumuna getirir. */
+.modal:target .modal-content {
+  transform: translateY(0); /* Dikeyde orijinal konumuna gelir. */
+}
+
+.close-button {
+  color: var(--navy-blue); /* Kapatma düğmesinin metin rengi lacivert. */
+  position: absolute; /* Mutlak konumlandırma. */
+  top: 20px; /* Üstten 20px aşağıda konumlandırır. */
+  right: 20px; /* Sağdan 20px içeride konumlandırır. */
+  font-size: 20px; /* Font boyutu. */
+  font-weight: normal; /* Font kalınlığı. */
+  cursor: pointer; /* Fare imleci üzerine gelince işaretçi olur. */
+  background-color: var(--cornflower); /* Arka plan rengi cornflower. */
+  border-radius: 50%; /* Dairesel şekil. */
+  width: 24px; /* Genişlik. */
+  height: 24px; /* Yükseklik. */
+  display: flex; /* İçeriği esnek kutu modeliyle düzenler (genellikle 'X' sembolünü ortalamak için). */
+  justify-content: center; /* Yatayda ortalar. */
+  align-items: center; /* Dikeyde ortalar. */
+  text-decoration: none; /* Linkin alt çizgisini kaldırır. */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Arka plan ve metin rengi değişimlerine yumuşak geçiş efekti. */
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: var(--white); /* Fare üzerine gelince veya odaklanınca metin rengi beyaz. */
+  background-color: var(--ocean); /* Arka plan rengi ocean olur. */
+}
+
+.modal-header {
+  text-align: center; /* İçindeki metni ortalar. */
+  margin-bottom: 24px; /* Alttan dış boşluk. */
+  padding-bottom: 0; /* İç alt boşluğu sıfırlar. */
+}
+
+.modal-header h2 {
+  margin: 0; /* Dış boşluğu sıfırlar. */
+  font-size: 16px; /* Font boyutu. */
+  color: var(--navy-blue); /* Metin rengi lacivert. */
+  font-weight: 500; /* Font kalınlığı. */
+  line-height: 1.5; /* Satır yüksekliği. */
+  letter-spacing: 0.02em; /* Harf aralığı. */
+  top: 50px; /* Üstten 50px aşağıda konumlandırır (`position: relative` nedeniyle göreceli). */
+  position: relative; /* Elementin kendi akışında hareket etmesini sağlar. */
+}
+
+.modal-body {
+  padding: 0 16px; /* Yatayda iç boşluk. */
+}
+
+.form-group {
+  margin-bottom: 8px; /* Alttan dış boşluk. */
+  position: relative; /* İçindeki ikonlar için referans noktası olur. */
+  top: 40px; /* Üstten 40px aşağıda konumlandırır (tüm form grubunu aşağı iter). */
+}
+
+.form-group label {
+  display: block; /* Tam genişliği kaplamasını sağlar. */
+  font-weight: 400; /* Font kalınlığı. */
+  color: var(--light-slate); /* Metin rengi light-slate. */
+  font-size: 12px; /* Font boyutu. */
+  line-height: 1.17; /* Satır yüksekliği. */
+  letter-spacing: 0.04em; /* Harf aralığı. */
+  margin-bottom: 4px; /* Label ile input arasındaki boşluk. */
+}
+
+/* Sadece 'name' inputunun placeholder metnini özelleştirir. */
+#name::placeholder {
+  color: var(--navy-blue); /* Placeholder metin rengini lacivert yapar. */
+  /* width, border, position, right gibi özellikler ::placeholder için genellikle etkisizdir ve metnin görselini etkilemez. */
+}
+.input-icon-wrapper {
+  position: relative; /* İçindeki ikonun mutlak konumlandırması için referans noktası olur. */
+  width: 100%; /* Tam genişlik. */
+  height: 40px; /* Sabit yükseklik. */
+}
+
+.input-icon-wrapper input {
+  width: 100%; /* Tam genişlik. */
+  padding: 8px 16px 8px 38px; /* İç boşluk (solda ikon için 38px boşluk). */
+  font-size: 14px; /* Font boyutu. */
+  border: 1px solid rgba(46, 47, 66, 0.4); /* Kenarlık rengi ve kalınlığı. */
+  border-radius: 4px; /* Köşe yuvarlatması. */
+  outline: none; /* Input'a odaklanıldığında varsayılan dış çerçeveyi kaldırır. */
+  background: transparent; /* Arka plan şeffaf. */
+  box-sizing: border-box; /* Padding ve border'ın genişliğe dahil olmasını sağlar. */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Kenarlık rengi ve gölge değişimlerine yumuşak geçiş efekti. */
+}
+
+/* Sadece "name" inputuna odaklanıldığında ilgili ikonun rengini değiştirir. */
+.form-group #name:focus + .name-input-icon {
+  fill: var(--iris); /* İkonun rengini iris olarak ayarlar. */
+}
+
+.input-icon-wrapper svg.icon {
+  position: absolute; /* Mutlak konumlandırma. */
+  left: 16px; /* Soldan 16px içeride konumlandırır. */
+  top: 40%; /* Üstten %40'ta konumlandırır (wrapper yüksekliğine göre). */
+  transform: translateY(-50%); /* Kendi yüksekliğinin yarısı kadar yukarı kaydırarak dikeyde ortalar. */
+  width: 12px; /* Genişlik. */
+  height: 12px; /* Yükseklik. */
+  fill: var(--navy-blue); /* İkon rengi lacivert. */
+  pointer-events: none; /* Fare olaylarının ikon üzerinden geçmesini sağlar (böylece input tıklanabilir olur). */
+  transition: fill 0.3s ease; /* Renk değişimine yumuşak geçiş efekti. */
+}
+
+/* Input'a odaklanıldığında kenarlık rengini değiştirir. */
+.form-group input:focus {
+  border-color: var(--iris); /* Kenarlık rengini iris yapar. */
+}
+
+.form-group textarea {
+  width: 100%; /* Tam genişlik. */
+  height: 120px; /* Sabit yükseklik. */
+  padding: 8px 16px; /* İç boşluk. */
+  resize: none; /* Kullanıcının textarea boyutunu değiştirmesini engeller. */
+  font-size: 14px; /* Font boyutu. */
+  border: 1px solid rgba(46, 47, 66, 0.4); /* Kenarlık rengi ve kalınlığı. */
+  border-radius: 4px; /* Köşe yuvarlatması. */
+  background: transparent; /* Arka plan şeffaf. */
+  box-sizing: border-box; /* Padding ve border'ın genişliğe dahil olmasını sağlar. */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Kenarlık rengi ve gölge değişimlerine yumuşak geçiş efekti. */
+}
+
+.form-group textarea::placeholder {
+  font-family: var(--font-family); /* Placeholder font ailesi. */
+  font-weight: 400; /* Font kalınlığı. */
+  font-size: 12px; /* Font boyutu. */
+  color: rgba(46, 47, 66, 0.6); /* Placeholder metin rengi ve şeffaflığı. */
+}
+
+.terms-checkbox {
+  display: flex; /* İçeriği esnek kutu modeliyle düzenler. */
+  align-items: center; /* İçerikleri dikeyde ortalar. */
+  top: 50px; /* Üstten 50px aşağıda konumlandırır (göreceli). */
+  position: relative; /* Elementin kendi akışında hareket etmesini sağlar. */
+  font-size: 12px; /* Font boyutu. */
+  line-height: 1.17; /* Satır yüksekliği. */
+  letter-spacing: 0.04em; /* Harf aralığı. */
+  color: var(--cornflower); /* Metin rengi cornflower. */
+}
+
+.terms-checkbox input[type="checkbox"] {
+  margin-right: 8px; /* Sağdan dış boşluk. */
+  width: 16px; /* Genişlik. */
+  height: 16px; /* Yükseklik. */
+  border: 1px solid rgba(46, 47, 66, 0.4); /* Kenarlık rengi ve kalınlığı. */
+  border-radius: 2px; /* Köşe yuvarlatması. */
+  cursor: pointer; /* Fare imleci üzerine gelince işaretçi olur. */
+  appearance: none; /* Tarayıcının varsayılan checkbox görünümünü kaldırır. */
+  -webkit-appearance: none; /* Webkit tabanlı tarayıcılar için varsayılan görünümü kaldırır. */
+  background-color: transparent; /* Arka plan şeffaf. */
+  display: flex; /* İçeriği esnek kutu modeliyle düzenler (genellikle özel bir ikon yerleştirmek için). */
+  justify-content: center; /* Yatayda ortalar. */
+  align-items: center; /* Dikeyde ortalar. */
+  transition: background-color 0.3s ease, border-color 0.3s ease; /* Arka plan ve kenarlık rengi değişimlerine yumuşak geçiş efekti. */
+}
+
+/* Checkbox işaretlendiğinde stil değişikliği. */
+.terms-checkbox input[type="checkbox"]:checked {
+  background-color: var(--ocean); /* Arka plan rengi ocean olur. */
+  border-color: var(--ocean); /* Kenarlık rengi ocean olur. */
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.4429 0.999999L4.0157 5.42719L1.55708 2.96857L0.742915 3.78274L3.63942 6.67926L4.0157 7.05553L4.39198 6.67926L9.25708 1.81416L8.4429 0.999999Z' fill='%23F4F4FD'/%3E%3C/svg%3E"); /* İşaretleme ikonu (SVG data URI olarak gömülü). */
+  background-repeat: no-repeat; /* Görsel tekrarını engeller. */
+  background-position: center; /* Görseli merkezler. */
+}
+
+.terms-checkbox label {
+  color: rgba(128, 128, 128, 0.8); /* Metin rengi ve şeffaflığı. */
+  line-height: 1.33; /* Satır yüksekliği. */
+}
+
+.privacy-policy {
+  color: var(--iris); /* Metin rengi iris. */
+  text-decoration: underline; /* Alt çizgili. */
+  font-weight: 400; /* Font kalınlığı. */
+}
+
+.privacy-policy:hover {
+  text-decoration: none; /* Fare üzerine gelince alt çizgiyi kaldırır. */
+}
+
+.send-button {
+  width: 169px; /* Sabit genişlik. */
+  height: 56px; /* Sabit yükseklik. */
+  padding: 0; /* İç boşluğu sıfırlar. */
+  margin: 0 auto; /* Yatayda ortalar. */
+  display: block; /* Blok elementi yapar. */
+  top: 70px; /* Üstten 70px aşağıda konumlandırır (göreceli). */
+  position: relative; /* Elementin kendi akışında hareket etmesini sağlar. */
+  background-color: var(--iris); /* Arka plan rengi iris. */
+  color: var(--white); /* Metin rengi beyaz. */
+  border: none; /* Kenarlığı kaldırır. */
+  border-radius: 4px; /* Köşe yuvarlatması. */
+  font-size: 16px; /* Font boyutu. */
+  font-weight: 500; /* Font kalınlığı. */
+  line-height: 1.5; /* Satır yüksekliği. */
+  letter-spacing: 0.04em; /* Harf aralığı. */
+  cursor: pointer; /* Fare imleci üzerine gelince işaretçi olur. */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Arka plan ve gölge değişimlerine yumuşak geçiş efekti. */
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15); /* Gölge efekti. */
+}
+
+.send-button:hover,
+.send-button:focus {
+  background-color: var(--ocean); /* Fare üzerine gelince veya odaklanınca arka plan rengi ocean olur. */
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); /* Daha belirgin gölge efekti. */
+}
+/* ===================== MODAL END ===================== */
+
+/* ===================== ICON BOX START ===================== */
+/* İkon kutuları bölümünün stil tanımlamaları. */
 .box {
-  background-color: var(--cloud);
-  height: 112px;
-  width: 264px;
-  top: -10px;
-  position: relative;
-  border-radius: 4px;
-  border: 1px solid var(--light-slate);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: var(--cloud); /* Arka plan rengi cloud. */
+  height: 112px; /* Sabit yükseklik. */
+  width: 264px; /* Sabit genişlik. */
+  top: -10px; /* Üstten 10px yukarı kaydırır (göreceli). */
+  position: relative; /* Elementin kendi akışında hareket etmesini sağlar. */
+  border-radius: 4px; /* Köşe yuvarlatması. */
+  border: 1px solid var(--light-slate); /* Kenarlık. */
+  display: flex; /* İçeriği esnek kutu modeliyle düzenler. */
+  justify-content: center; /* Yatayda ortalar. */
+  align-items: center; /* Dikeyde ortalar. */
 }
 
 .box svg {
-  display: block;
+  display: block; /* SVG'yi blok elementi yapar. */
 }
-/* ===================== İCON BOX END ===================== */
+/* ===================== ICON BOX END ===================== */
 
 /* ===================== SECTION 1 START ===================== */
+/* İlk içerik bölümünün stil tanımlamaları. */
 .section1 .container {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 1228px;
-  height: 224px;
-  margin: 100px auto 40px auto;
-  padding: 20px;
-  box-sizing: border-box;
+  display: flex; /* İçeriği esnek kutu modeliyle düzenler. */
+  flex-wrap: wrap; /* İçeriğin alt satıra geçmesini sağlar. */
+  max-width: 1228px; /* Maksimum genişlik. */
+  height: 224px; /* Sabit yükseklik. */
+  margin: 100px auto 40px auto; /* Üstten 100px, alttan 40px, yatayda ortalanmış dış boşluk. */
+  padding: 20px; /* İç boşluk. */
+  box-sizing: border-box; /* Padding ve border'ın genişliğe dahil olmasını sağlar. */
 }
 
 .section1 ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  width: 264px;
-  height: 72px;
-  margin-top: 10px;
-  display: flex;
-  gap: 32px;
+  list-style: none; /* Liste işaretleyicilerini kaldırır. */
+  padding: 0; /* İç boşluğu sıfırlar. */
+  margin: 0; /* Dış boşluğu sıfırlar. */
+  width: 264px; /* Genişlik. */
+  height: 72px; /* Yükseklik. */
+  margin-top: 10px; /* Üstten dış boşluk. */
+  display: flex; /* İçeriği esnek kutu modeliyle düzenler. */
+  gap: 32px; /* Öğeler arasında 32px boşluk. */
 }
 
 .section1 ul li {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  letter-spacing: 0.5px;
-  color: var(--slate);
+  font-weight: 400; /* Font kalınlığı. */
+  font-size: 16px; /* Font boyutu. */
+  line-height: 24px; /* Satır yüksekliği. */
+  letter-spacing: 0.5px; /* Harf aralığı. */
+  color: var(--slate); /* Metin rengi slate. */
 }
 
 .section1 h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
-  color: var(--navy-blue);
+  font-size: 20px; /* Font boyutu. */
+  margin-bottom: 10px; /* Alttan dış boşluk. */
+  color: var(--navy-blue); /* Metin rengi lacivert. */
 }
 
 .section1 p {
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: 0.02px;
-  color: var(--slate);
+  font-size: 14px; /* Font boyutu. */
+  line-height: 24px; /* Satır yüksekliği. */
+  letter-spacing: 0.02px; /* Harf aralığı. */
+  color: var(--slate); /* Metin rengi slate. */
 }
 /* ===================== SECTION 1 END ===================== */
 
 /* ===================== OUR TEAM START ===================== */
+/* Ekibimiz bölümünün stil tanımlamaları. */
 .our-team {
-  background-color: var(--cloud);
-  width: 100vw;
-  padding: 100px 0;
-  text-align: center;
-  margin-top: 100px;
+  background-color: var(--cloud); /* Arka plan rengi cloud. */
+  width: 100vw; /* Görünüm penceresinin tam genişliğini kaplar. */
+  padding: 100px 0; /* Dikeyde 100px iç boşluk. */
+  text-align: center; /* İçindeki metni ortalar. */
+  margin-top: 100px; /* Üstten dış boşluk. */
 }
 
 .our-team .container {
-  max-width: 1440px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 140px;
-  box-sizing: border-box;
+  max-width: 1440px; /* Maksimum genişlik. */
+  width: 100%; /* Tam genişlik. */
+  margin: 0 auto; /* Yatayda ortalar. */
+  padding: 0 140px; /* Yatayda 140px iç boşluk. */
+  box-sizing: border-box; /* Padding ve border'ın genişliğe dahil olmasını sağlar. */
 }
 
 .our-team-h2 {
-  font-size: 36px;
-  margin-bottom: 60px;
-  color: var(--navy-blue);
-  font-weight: 700;
-  line-height: 40px;
-  letter-spacing: 0.02em;
-  display: inline-block;
+  font-size: 36px; /* Font boyutu. */
+  margin-bottom: 60px; /* Alttan dış boşluk. */
+  color: var(--navy-blue); /* Metin rengi lacivert. */
+  font-weight: 700; /* Font kalınlığı (bold). */
+  line-height: 40px; /* Satır yüksekliği. */
+  letter-spacing: 0.02em; /* Harf aralığı. */
+  display: inline-block; /* Inline-block olarak davranır. */
 }
 
 .our-team-list {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: center;
+  display: flex; /* Ekip üyelerini esnek kutu modeliyle dizer. */
+  flex-wrap: nowrap; /* Üyelerin alt satıra geçmesini engeller. */
+  justify-content: center; /* Yatayda ortalar. */
 }
 
 .team-member {
-  max-width: 264px;
-  background-color: var(--white);
-  border-radius: 4px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 32px;
+  max-width: 264px; /* Maksimum genişlik. */
+  background-color: var(--white); /* Arka plan rengi beyaz. */
+  border-radius: 4px; /* Köşe yuvarlatması. */
+  overflow: hidden; /* İçeriğin taşmasını gizler. */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Gölge efekti. */
+  display: flex; /* İçeriği esnek kutu modeliyle düzenler. */
+  flex-direction: column; /* İçeriği dikeyde sıralar. */
+  align-items: center; /* Yatayda ortalar. */
+  gap: 32px; /* Öğeler arasında 32px boşluk. */
 }
 
 .team-info {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 0 10px;
-  gap: 12px;
-  height: 104px;
+  margin-top: 20px; /* Üstten dış boşluk. */
+  display: flex; /* İçeriği esnek kutu modeliyle düzenler. */
+  flex-direction: column; /* İçeriği dikeyde sıralar. */
+  justify-content: center; /* Dikeyde ortalar. */
+  align-items: center; /* Yatayda ortalar. */
+  text-align: center; /* Metni ortalar. */
+  padding: 0 10px; /* Yatayda iç boşluk. */
+  gap: 12px; /* Öğeler arasında 12px boşluk. */
+  height: 104px; /* Sabit yükseklik. */
 }
 
 .team-info h3 {
-  color: var(--navy-blue);
-  margin-top: -50px;
+  color: var(--navy-blue); /* Metin rengi lacivert. */
+  margin-top: -50px; /* Üstten negatif dış boşluk (elementi 50px yukarı kaydırır). */
 }
 
 .team-info p {
-  color: var(--slate);
-  top: 50px;
+  color: var(--slate); /* Metin rengi slate. */
+  top: 50px; /* Üstten 50px aşağıda konumlandırır (göreceli). */
 }
 
 .social-icons {
-  display: flex;
-  gap: 24px;
-  justify-content: center;
-  align-items: center;
+  display: flex; /* İkonları esnek kutu modeliyle dizer. */
+  gap: 24px; /* İkonlar arasında 24px boşluk. */
+  justify-content: center; /* Yatayda ortalar. */
+  align-items: center; /* Dikeyde ortalar. */
 }
 
 .icon-wrapper {
-  width: 40px;
-  height: 40px;
-  background-color: var(--iris);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 40px; /* Genişlik. */
+  height: 40px; /* Yükseklik. */
+  background-color: var(--iris); /* Arka plan rengi iris. */
+  border-radius: 50%; /* Dairesel şekil. */
+  display: flex; /* İçeriği esnek kutu modeliyle düzenler. */
+  justify-content: center; /* Yatayda ortalar. */
+  align-items: center; /* Dikeyde ortalar. */
 }
 
 .icon-wrapper .icon {
-  width: 20px;
-  height: 20px;
-  fill: var(--cloud);
-  transition: fill 0.3s ease;
+  width: 20px; /* İkon genişliği. */
+  height: 20px; /* İkon yüksekliği. */
+  fill: var(--cloud); /* İkon rengi cloud. */
+  transition: fill 0.3s ease; /* Renk değişimine yumuşak geçiş efekti. */
 }
 .icon-wrapper:hover {
-  background-color: var(--ocean);
+  background-color: var(--ocean); /* Fare üzerine gelince arka plan rengi ocean olur. */
 }
 
 /* ===================== OUR TEAM END ===================== */
 
 /* ===================== OUR PORTFOLIO START ===================== */
+/* Portföy bölümünün stil tanımlamaları. */
 
 .our-portfolio {
-  width: 100%;
-  max-width: 1128px;
-  margin: 0 auto;
-  padding: 200px 0;
+  width: 100%; /* Tam genişlik. */
+  max-width: 1128px; /* Maksimum genişlik. */
+  margin: 0 auto; /* Yatayda ortalar. */
+  padding: 200px 0; /* Dikeyde 200px iç boşluk. */
 }
 .our-portfolio h2 {
-  font-weight: 700;
-  font-size: 36px;
-  line-height: 40px;
-  width: 218px;
-  height: 40px;
-  margin: -60px auto 40px auto;
-  position: relative;
-  color: var(--navy-blue);
+  font-weight: 700; /* Font kalınlığı. */
+  font-size: 36px; /* Font boyutu. */
+  line-height: 40px; /* Satır yüksekliği. */
+  width: 218px; /* Genişlik. */
+  height: 40px; /* Yükseklik. */
+  margin: -60px auto 40px auto; /* Üstten negatif, alttan pozitif, yatayda ortalanmış dış boşluk. */
+  position: relative; /* Elementin kendi akışında hareket etmesini sağlar. */
+  color: var(--navy-blue); /* Metin rengi lacivert. */
 }
 
 .our-portfolio-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 120px;
+  display: flex; /* İçeriği esnek kutu modeliyle düzenler. */
+  flex-direction: column; /* İçeriği dikeyde sıralar. */
+  align-items: center; /* Yatayda ortalar. */
+  margin-top: 120px; /* Üstten dış boşluk. */
 }
 
 .our-portfolio-list-row-1,
 .our-portfolio-list-row-2 {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  margin: 0;
-  justify-content: center;
+  display: flex; /* İçeriği esnek kutu modeliyle dizer. */
+  flex-wrap: wrap; /* İçeriğin alt satıra geçmesini sağlar. */
+  gap: 24px; /* Öğeler arasında 24px boşluk. */
+  margin: 0; /* Dış boşluğu sıfırlar. */
+  justify-content: center; /* Yatayda ortalar. */
 }
 .our-portfolio-list-row-1 {
-  margin-top: -50px;
+  margin-top: -50px; /* Üstten negatif dış boşluk. */
 }
 .our-portfolio-list-row-2 {
-  margin-top: 80px;
+  margin-top: 80px; /* Üstten dış boşluk. */
 }
 .overlay-content {
-  top: -140px;
-  position: relative;
+  top: -140px; /* Üstten negatif konum. */
+  position: relative; /* Elementin kendi akışında hareket etmesini sağlar. */
 }
 .our-portfolio-card {
-  position: relative;
-  width: 360px;
-  height: 420px;
-  margin-bottom: 20px;
-  list-style: none;
-  cursor: pointer;
-  border: 1px solid var(--cornflower);
-  box-sizing: border-box;
-  background-color: var(--white);
-  overflow: hidden;
-  transition: box-shadow 0.4s ease;
+  position: relative; /* İçindeki overlay için referans noktası olur. */
+  width: 360px; /* Sabit genişlik. */
+  height: 420px; /* Sabit yükseklik. */
+  margin-bottom: 20px; /* Alttan dış boşluk. */
+  list-style: none; /* Liste işaretleyicilerini kaldırır. */
+  cursor: pointer; /* Fare imleci üzerine gelince işaretçi olur. */
+  border: 1px solid var(--cornflower); /* Kenarlık. */
+  box-sizing: border-box; /* Padding ve border'ın genişliğe dahil olmasını sağlar. */
+  background-color: var(--white); /* Arka plan rengi beyaz. */
+  overflow: hidden; /* İçeriğin taşmasını gizler. */
+  transition: box-shadow 0.4s ease; /* Gölge değişimine yumuşak geçiş efekti. */
 }
 .our-portfolio-card:hover {
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.1),
-    0px 1px 1px rgba(46, 47, 66, 0.06), 0px 2px 1px rgba(46, 47, 66, 0.08);
+    0px 1px 1px rgba(46, 47, 66, 0.06), 0px 2px 1px rgba(46, 47, 66, 0.08); /* Fare üzerine gelince gölge efekti. */
 }
 
 .our-portfolio-card img {
-  display: block;
-
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  display: block; /* Resmi blok elementi yapar. */
+  width: 100%; /* Tam genişlik. */
+  height: 100%; /* Tam yükseklik. */
+  object-fit: cover; /* Resmi, oranlarını koruyarak alanı kaplayacak şekilde boyutlandırır. */
 }
 
-/* Portfolio info altta sabit */
+/* Portföy bilgi bölümü altta sabit. */
 .portfolio-info {
-  position: absolute;
-  bottom: 0;
-  height: 120px;
-  width: 360px;
-  background-color: var(--white);
-  padding: 20px 16px;
-  box-sizing: border-box;
-  border-top: 1px solid var(--cornflower);
-  text-align: left;
-  z-index: 3; /* overlay'den üstte */
+  position: absolute; /* Mutlak konumlandırma. */
+  bottom: 0; /* Alta hizalar. */
+  height: 120px; /* Sabit yükseklik. */
+  width: 360px; /* Sabit genişlik. */
+  background-color: var(--white); /* Arka plan rengi beyaz. */
+  padding: 20px 16px; /* İç boşluk. */
+  box-sizing: border-box; /* Padding ve border'ın genişliğe dahil olmasını sağlar. */
+  border-top: 1px solid var(--cornflower); /* Üst kenarlık. */
+  text-align: left; /* Metni sola hizalar. */
+  z-index: 3; /* Overlay'den üstte görünmesini sağlar. */
 }
 
 .overlay {
-  position: absolute;
-  bottom: -100%; /* başlangıçta gizli kalıt  */
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--iris);
-  color: white;
-  padding: 20px;
-  box-sizing: border-box;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: bottom 0.6s ease;
-  z-index: 2;
+  position: absolute; /* Mutlak konumlandırma. */
+  bottom: -100%; /* Başlangıçta altından gizli. */
+  left: 0; /* Sola hizalar. */
+  width: 100%; /* Tam genişlik. */
+  height: 100%; /* Tam yükseklik. */
+  background-color: var(--iris); /* Arka plan rengi iris. */
+  color: white; /* Metin rengi beyaz. */
+  padding: 20px; /* İç boşluk. */
+  box-sizing: border-box; /* Padding ve border'ın genişliğe dahil olmasını sağlar. */
+  text-align: center; /* Metni ortalar. */
+  display: flex; /* İçeriği esnek kutu modeliyle düzenler. */
+  justify-content: center; /* Yatayda ortalar. */
+  align-items: center; /* Dikeyde ortalar. */
+  transition: bottom 0.6s ease; /* Konum değişimine yumuşak geçiş efekti. */
+  z-index: 2; /* Bilgi bölümünün altında görünmesini sağlar. */
 }
 
 .our-portfolio-card:hover .overlay {
-  bottom: 0; /* hover ile yukarı çıkar */
+  bottom: 0; /* Fare üzerine gelince overlay yukarı doğru hareket eder ve görünür hale gelir. */
 }
 
 .portfolio-info h3 {
-  color: var(--navy-blue);
+  color: var(--navy-blue); /* Metin rengi lacivert. */
 }
 .portfolio-info p {
-  margin-top: 12px;
-  color: var(--slate);
+  margin-top: 12px; /* Üstten dış boşluk. */
+  color: var(--slate); /* Metin rengi slate. */
 }
 /* ===================== OUR PORTFOLIO END ===================== */
 
 /* ===================== FOOTER START ===================== */
+/* Sayfa altbilgisinin genel stil tanımlamaları. */
 footer {
-  background-color: var(--navy-blue);
-  width: 100%;
-  height: 312px;
-  color: var(--white);
+  background-color: var(--navy-blue); /* Arka plan rengi lacivert. */
+  width: 100%; /* Tam genişlik. */
+  height: 312px; /* Sabit yükseklik. */
+  color: var(--white); /* Metin rengi beyaz. */
 }
 
 footer .container {
-  max-width: 1200px;
+  max-width: 1200px; /* Maksimum genişlik. */
 }
 
 .footer .logo a {
-  font-family: var(--second-family);
-  color: var(--iris);
-  text-decoration: none;
-  margin-bottom: 20px;
-  display: block;
-  margin-left: 40px;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 21px;
-  letter-spacing: 0.03em;
-  top: 60px;
-  position: relative;
+  font-family: var(--second-family); /* İkincil font ailesi. */
+  color: var(--iris); /* Logo rengi iris. */
+  text-decoration: none; /* Alt çizgiyi kaldırır. */
+  margin-bottom: 20px; /* Alttan dış boşluk. */
+  display: block; /* Blok elementi yapar. */
+  margin-left: 40px; /* Soldan dış boşluk. */
+  font-weight: 700; /* Font kalınlığı (bold). */
+  font-size: 18px; /* Font boyutu. */
+  line-height: 21px; /* Satır yüksekliği. */
+  letter-spacing: 0.03em; /* Harf aralığı. */
+  top: 60px; /* Üstten 60px aşağıda konumlandırır (göreceli). */
+  position: relative; /* Elementin kendi akışında hareket etmesini sağlar. */
 }
 
 .logo a span {
-  color: var(--white);
+  color: var(--white); /* Logo içindeki `span` elementinin rengi beyaz. */
 }
 
 .footer p {
-  font-family: var(--font-family);
-  color: white;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  letter-spacing: 0.02px;
-  width: 264px;
-  height: 112px;
-  text-align: justify;
-  right: 430px;
-  top: 50px;
-  position: relative;
+  font-family: var(--font-family); /* Font ailesi. */
+  color: white; /* Metin rengi beyaz. */
+  font-weight: 400; /* Font kalınlığı. */
+  font-size: 16px; /* Font boyutu. */
+  line-height: 24px; /* Satır yüksekliği. */
+  letter-spacing: 0.02px; /* Harf aralığı. */
+  width: 264px; /* Sabit genişlik. */
+  height: 112px; /* Sabit yükseklik. */
+  text-align: justify; /* Metni iki yana yaslar. */
+  right: 430px; /* Sağdan 430px sola kaydırır (negatif değer). */
+  top: 50px; /* Üstten 50px aşağıda konumlandırır (göreceli). */
+  position: relative; /* Elementin kendi akışında hareket etmesini sağlar. */
 }
 /* ===================== FOOTER END ===================== */
 
-/* ===================== FOOTER SOCİALSTART ===================== */
+/* ===================== FOOTER SOCIAL START ===================== */
+/* Altbilgideki sosyal medya ikonlarının stil tanımlamaları. */
 .footer .social-icons {
-  gap: 16px;
+  gap: 16px; /* İkonlar arasında 16px boşluk. */
 }
 
 .footer .social-icons a {
-  margin: 0;
-  padding: 0;
+  margin: 0; /* Dış boşluğu sıfırlar. */
+  padding: 0; /* İç boşluğu sıfırlar. */
 }
 
 .footer .icon-wrapper {
-  width: 40px;
-  height: 40px;
-  background-color: var(--iris);
-  border-radius: 50%;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  top: 140px;
-  right: 560px;
-  position: relative;
+  width: 40px; /* Genişlik. */
+  height: 40px; /* Yükseklik. */
+  background-color: var(--iris); /* Arka plan rengi iris. */
+  border-radius: 50%; /* Dairesel şekil. */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Arka plan rengi ve transformasyon değişimine yumuşak geçiş efekti. */
+  top: 140px; /* Üstten 140px aşağıda konumlandırır (göreceli). */
+  right: 560px; /* Sağdan 560px sola kaydırır (negatif değer). */
+  position: relative; /* Elementin kendi akışında hareket etmesini sağlar. */
 }
 
 .social-title {
-  position: relative;
-  top: 90px;
-  right: 10px;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-  letter-spacing: 0.2px;
+  position: relative; /* Elementin kendi akışında hareket etmesini sağlar. */
+  top: 90px; /* Üstten 90px aşağıda konumlandırır. */
+  right: 10px; /* Sağdan 10px sola kaydırır. */
+  font-weight: 500; /* Font kalınlığı. */
+  font-size: 16px; /* Font boyutu. */
+  line-height: 24px; /* Satır yüksekliği. */
+  letter-spacing: 0.2px; /* Harf aralığı. */
 }
 
 .footer .icon-wrapper:hover {
-  background-color: #31d0aa;
+  background-color: #31d0aa; /* Fare üzerine gelince arka plan rengi yeşil olur. */
 }
 
 .footer .icon {
-  width: 24px;
-  height: 24px;
-  fill: var(--cloud);
+  width: 24px; /* İkon genişliği. */
+  height: 24px; /* İkon yüksekliği. */
+  fill: var(--cloud); /* İkon rengi cloud. */
 }
-/* ===================== FOOTER SOCİAL END ===================== */
+/* ===================== FOOTER SOCIAL END ===================== */
 
-
-/* ===================== FOOTER EMAİL İNPUT START ===================== */
-
+/* ===================== FOOTER EMAIL INPUT START ===================== */
+/* Altbilgideki e-posta abonelik formunun stil tanımlamaları. */
 
 form {
-  width: 453px; /* İstersen form genişliği */
-  height: 80px;
-  display: flex;
-  align-items: center;     /* Input ve button aynı hizada */
-  gap: 12px;   
-  left: 340px;
-  top: -85px;
-  position: relative;
+  width: 453px; /* Formun sabit genişliği. */
+  height: 80px; /* Formun sabit yüksekliği. */
+  display: flex; /* İçeriği esnek kutu modeliyle düzenler. */
+  align-items: center; /* İçindeki öğeleri (input ve buton) dikeyde ortalar. */
+  gap: 12px; /* Öğeler arasında 12px boşluk. */
+  left: 340px; /* Soldan 340px sağa kaydırır. */
+  top: -85px; /* Üstten 85px yukarı kaydırır (negatif değer). */
+  position: relative; /* Elementin kendi akışında hareket etmesini sağlar. */
 }
 
-.email-input {
-  
-  color: var(--white);
-  font-weight: 600;
-  font-size: 14px;
-  width: 264px;
+.footer .email-input {
+  color: var(--white); /* Metin rengi beyaz. */
+  font-weight: 600; /* Font kalınlığı. */
+  font-size: 14px; /* Font boyutu. */
+  width: 264px; /* Genişlik. */
 }
 
-.email-input span {
-  
-  top: -20px;
-  position: relative;
-  line-height: 24px;
-  letter-spacing: 0.4px;
-  font-size: 16px;
-  font-family: var(--font-family);
+.footer .email-input span {
+  top: -20px; /* Üstten 20px yukarı kaydırır (göreceli). */
+  position: relative; /* Elementin kendi akışında hareket etmesini sağlar. */
+  line-height: 24px; /* Satır yüksekliği. */
+  letter-spacing: 0.4px; /* Harf aralığı. */
+  font-size: 16px; /* Font boyutu. */
+  font-family: var(--font-family); /* Font ailesi. */
 }
 
-.email-input input {
-  width: 100%;
-  height: 40px;
-  border-radius: 4px;
-  border: 1px solid var(--white);
-  background-color: transparent;
-  color: var(--white);
-  font-size: 14px;
-  filter: drop-shadow(0 4px 4px ) var(--white);
-  
+.footer .email-input input {
+  width: 100%; /* İçindeki alanı kaplar. */
+  height: 40px; /* Yükseklik. */
+  border-radius: 4px; /* Köşe yuvarlatması. */
+  border: 1px solid var(--white); /* Beyaz kenarlık. */
+  background-color: transparent; /* Arka plan şeffaf. */
+  color: var(--white); /* Metin rengi beyaz. */
+  font-size: 14px; /* Font boyutu. */
+  filter: drop-shadow(0 4px 4px) var(--white); /* Gölge filtresi (bu kullanım genellikle CSS `box-shadow` ile yapılır). */
 }
 
-
-
-.email-input input::placeholder{
-  width: 36px;
-  height: 24px;
-  color: var(--white);
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 24px;
-  letter-spacing: 0.4px;
-  left: 15px;
-  position: relative;
+.footer .email-input input::placeholder {
+  /* width, height, position ve left özellikleri placeholder metni için genellikle etkisizdir. */
+  color: var(--white); /* Placeholder metin rengi beyaz. */
+  font-size: 12px; /* Font boyutu. */
+  font-weight: 400; /* Font kalınlığı. */
+  line-height: 24px; /* Satır yüksekliği. */
+  letter-spacing: 0.4px; /* Harf aralığı. */
 }
-
 
 .footer button {
-  width: 165px;
-  height: 40px;
-  background-color: var(--iris);
-  color: var(--white);
-  border-radius: 4px;
-  border: none;
-  font-weight: 400;
-  font-size: 16px;
-  cursor: pointer;
-  display: flex;           /* İçindeki iconu ve yazıyı hizala */
-  align-items: center;
-  justify-content: center;
-  gap: 8px;    
-  font-family: var(--font-family); 
-  margin-top: 25px;  
-  padding: 8px 24px 8px 24px;        /* Buton içi ikon ile yazı arası */
-  margin-left: 10px;
+  width: 165px; /* Genişlik. */
+  height: 40px; /* Yükseklik. */
+  background-color: var(--iris); /* Arka plan rengi iris. */
+  color: var(--white); /* Metin rengi beyaz. */
+  border-radius: 4px; /* Köşe yuvarlatması. */
+  border: none; /* Kenarlığı kaldırır. */
+  font-weight: 400; /* Font kalınlığı. */
+  font-size: 16px; /* Font boyutu. */
+  cursor: pointer; /* Fare imleci üzerine gelince işaretçi olur. */
+  display: flex; /* İçindeki ikon ve metni hizalamak için esnek kutu modeli. */
+  align-items: center; /* Dikeyde ortalar. */
+  justify-content: center; /* Yatayda ortalar. */
+  gap: 8px; /* Öğeler arasında 8px boşluk. */
+  font-family: var(--font-family); /* Font ailesi. */
+  margin-top: 25px; /* Üstten dış boşluk. */
+  padding: 8px 24px; /* İç boşluk (top/bottom 8px, left/right 24px). */
+  margin-left: 10px; /* Soldan dış boşluk. */
 }
 
 .footer button svg.icon {
-  width: 16px;
-  height: 16px;
-  fill: currentColor;      /* Renk buton yazısı ile aynı olur */
+  width: 16px; /* İkon genişliği. */
+  height: 16px; /* İkon yüksekliği. */
+  fill: currentColor; /* İkon rengini, üst elementin (butonun) metin rengiyle aynı yapar. */
 }
+/* ===================== FOOTER EMAIL INPUT END ===================== */
