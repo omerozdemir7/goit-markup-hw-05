@@ -243,7 +243,15 @@ body {
   opacity: 1; /* Tamamen opak hale gelir. */
   visibility: visible; /* Görünür hale gelir. */
 }
+.modal.is-open {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+}
 
+.modal.is-open .modal-content {
+  transform: translateY(0);
+}
 .modal-content {
   background-color: #fff; /* Modal içeriğinin arka plan rengi beyaz. */
   padding: 20px; /* İç boşluk. */
