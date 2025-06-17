@@ -1,19 +1,18 @@
 /* ===================== :ROOT START ===================== */
-/* Bu bölüm, projenin genelinde tekrar eden değerleri (renkler, fontlar vb.) tanımlayan CSS değişkenlerini (custom properties) içerir. 
-   Bu değişkenler, stil tutarlılığını sağlamak ve kolayca değişiklik yapmak için kullanılır. */
+
 :root {
-  --iris: #4d5ae5; /* Ana vurgu rengi, genellikle etkileşimli öğeler (butonlar, linkler) için kullanılır. */
-  --ocean: #404bbf; /* Hover veya aktif durumlar için --iris renginin daha koyu bir tonu. */
-  --navy-blue: #2e2f42; /* Koyu lacivert, genellikle ana metin veya arka plan rengi olarak kullanılır. */
-  --green: #31d0aa; /* Yeşil tonu, başarı mesajları veya belirli vurgular için kullanılabilir. */
-  --slate: #434455; /* Gri-mavi tonu, ikincil metinler veya daha az vurgulu öğeler için uygundur. */
-  --light-slate: #8e8f99; /* Açık gri-mavi tonu, daha hafif metinler, sınırlar veya pasif durumlar için kullanılır. */
-  --cornflower: #e7e9fc; /* Çok açık mavi/mor tonu, arka planlar, sınırlar veya ayrıştırıcılar için kullanılır. */
-  --cloud: #f4f4fd; /* Çok açık gri/beyaz tonu, genellikle arka planlar için kullanılır. */
-  --navy-blue-modal: rgba(46, 47, 66, 0.4); /* Modal (açılır pencere) arka planı için yarı şeffaf lacivert. */
-  --grey: rgba(46, 47, 66, 0.7); /* Genel gri tonu, yarı şeffaf olarak tanımlanmıştır. */
-  --white: #fff; /* Tamamen beyaz renk. */
-  --dairy: #fcfcfc; /* Neredeyse beyaz, çok hafif bir gri tonu. */
+  --iris: #4d5ae5;
+  --ocean: #404bbf;
+  --navy-blue: #2e2f42;
+  --green: #31d0aa;
+  --slate: #434455;
+  --light-slate: #8e8f99;
+  --cornflower: #e7e9fc;
+  --cloud: #f4f4fd;
+  --navy-blue-modal: rgba(46, 47, 66, 0.4);
+  --grey: rgba(46, 47, 66, 0.7);
+  --white: #fff;
+  --dairy: #fcfcfc;
 
   --font-family: "Roboto", sans-serif; /* Projenin ana font ailesi, Roboto ve yedek olarak genel sans-serif. */
   --second-family: "Raleway", sans-serif; /* İkincil font ailesi, genellikle logolar veya başlıklar gibi özel kullanımlar için. */
@@ -21,7 +20,7 @@
 /* ===================== :ROOT END ===================== */
 
 /* ===================== BODY START ===================== */
-/* HTML belgesinin temel stillerini ve genel sıfırlama kurallarını tanımlar. */
+
 * {
   margin: 0 auto; /* Tüm elementlerin yatayda ortalanması için kullanılır, ancak `position: absolute` veya flexbox gibi durumlarda dikkatli kullanılmalıdır. */
   padding: 0; /* Tüm HTML elementlerinin varsayılan iç boşluklarını (padding) sıfırlar. */
@@ -33,20 +32,24 @@ html {
   padding: 0; /* Sayfanın (body ve html elementlerinin) iç boşluklarını sıfırlar. */
   display: flex; /* `body` ve `html` elementlerini esnek kutu (flexbox) konteynerleri yapar. */
   flex-direction: column; /* Esnek öğelerin dikey yönde (sütun olarak) sıralanmasını sağlar. */
-  font-family: var(--font-family); /* Root'ta tanımlanan ana font ailesini tüm sayfaya uygular. */
+  font-family: var(
+    --font-family
+  ); /* Root'ta tanımlanan ana font ailesini tüm sayfaya uygular. */
 }
 
 body {
   padding-top: 72px; /* Navbar'ın yüksekliği kadar üstten iç boşluk bırakır, çünkü navbar `position: absolute` olduğu için normal akıştan çıkar. */
   box-sizing: border-box; /* `padding` ve `border` değerlerinin elementin toplam genişliğine ve yüksekliğine dahil olmasını sağlar. */
-  font-family: var(--font-family); /* Font ailesini tekrar belirtir, genellikle redundant olsa da tarayıcı tutarlılığı için kullanılabilir. */
+  font-family: var(
+    --font-family
+  ); /* Font ailesini tekrar belirtir, genellikle redundant olsa da tarayıcı tutarlılığı için kullanılabilir. */
   overflow-x: hidden; /* Yatayda oluşan kaydırma çubuğunu gizler, içeriğin yatayda taşmasını engeller. */
   height: auto; /* `body` yüksekliğinin içeriğine göre otomatik olarak ayarlanmasını sağlar. */
 }
 /* ===================== BODY END ===================== */
 
 /* ===================== NAVBAR START ===================== */
-/* Navigasyon çubuğunun genel stil tanımlamaları. */
+
 .navbar-wrapper {
   width: 1550px !important; /* Navigasyon çubuğunun genişliğini sabitler ve !important ile diğer kuralları geçersiz kılar (genellikle tavsiye edilmez). */
   height: 72px; /* Sabit yükseklik. */
@@ -77,12 +80,14 @@ body {
 }
 
 .logo-header span {
-  color: var(--navy-blue); /* Logo içindeki `span` elementinin rengini lacivert yapar. */
+  color: var(
+    --navy-blue
+  ); /* Logo içindeki `span` elementinin rengini lacivert yapar. */
 }
 /* ===================== NAVBAR END ===================== */
 
 /* ===================== MENU START ===================== */
-/* Navigasyon menüsü linklerinin ve adres bilgilerinin stil tanımlamaları. */
+
 .menu {
   list-style: none; /* Liste öğelerinin varsayılan işaretleyicilerini kaldırır. */
   display: flex; /* Menü öğelerini yan yana esnek kutular olarak dizer. */
@@ -100,7 +105,9 @@ body {
   text-decoration: none; /* Alt çizgiyi kaldırır. */
 }
 .menu li a.studio {
-  color: var(--ocean); /* 'studio' sınıfına sahip menü öğesinin rengini ocean yapar. */
+  color: var(
+    --ocean
+  ); /* 'studio' sınıfına sahip menü öğesinin rengini ocean yapar. */
 }
 .menu li a.studio::after {
   content: ""; /* Linkin altına bir pseudo-element (sözde öğe) oluşturur. */
@@ -113,7 +120,9 @@ body {
   border-radius: 2px; /* Alt çizginin köşe yuvarlatması. */
 }
 .menu li a:hover {
-  color: var(--ocean); /* Fare üzerine gelindiğinde metin rengini ocean yapar. */
+  color: var(
+    --ocean
+  ); /* Fare üzerine gelindiğinde metin rengini ocean yapar. */
 }
 .menu .studio:active {
   color: var(--ocean); /* Aktif/tıklanmış durumda metin rengini ocean yapar. */
@@ -142,10 +151,10 @@ body {
 /* ===================== MENU END ===================== */
 
 /* ===================== HERO-İMAGE START ===================== */
-/* Ana tanıtım görseli (hero section) stil tanımlamaları. */
+
 .hero-image {
   background-color: var(--navy-blue); /* Arka plan rengi lacivert. */
- max-width: 1550px; /* Hero görselinin genişliğini sabitler ve !important ile diğer kuralları geçersiz kılar. */
+  max-width: 1550px; /* Hero görselinin genişliğini sabitler ve !important ile diğer kuralları geçersiz kılar. */
   padding: 0 50px; /* Yatayda iç boşluk. */
   height: 600px; /* Sabit yükseklik. */
   display: flex; /* İçeriği esnek kutu modeliyle düzenler. */
@@ -153,8 +162,10 @@ body {
   align-items: center; /* Dikeyde ortalar. */
   text-align: center; /* İçindeki metni ortalar. */
   background-image: linear-gradient(
-      rgba(46, 47, 66, 0.7), /* Koyu renk geçişinin başlangıcı (yarı şeffaf lacivert). */
-      rgba(46, 47, 66, 0.7) /* Koyu renk geçişinin sonu (yarı şeffaf lacivert). */
+      rgba(46, 47, 66, 0.7),
+      /* Koyu renk geçişinin başlangıcı (yarı şeffaf lacivert). */
+        rgba(46, 47, 66, 0.7)
+        /* Koyu renk geçişinin sonu (yarı şeffaf lacivert). */
     ),
     url(../images/background.jpg); /* Arka plan görseli ve yolu. */
   background-repeat: no-repeat; /* Görsel tekrarını engeller. */
@@ -203,18 +214,21 @@ body {
 
 .order-service-button:hover,
 .order-service-button:focus {
-  background-color: var(--ocean); /* Fare üzerine gelince veya odaklanınca arka plan rengi ocean olur. */
+  background-color: var(
+    --ocean
+  ); /* Fare üzerine gelince veya odaklanınca arka plan rengi ocean olur. */
 }
 /* ===================== HERO-İMAG END ===================== */
 
 /* ===================== MODAL START ===================== */
-/* Modal (açılır pencere) ve arka planının stil tanımlamaları. */
 
 .modal {
   display: none; /* Varsayılan olarak gizli. */
   position: fixed; /* Ekranın belirli bir konumunda sabit kalır. */
   inset: 0; /* top, right, bottom, left değerlerini 0 yapar, böylece tam ekranı kaplar. */
-  background: var(--navy-blue-modal); /* Yarı şeffaf arka plan (backdrop) rengi. */
+  background: var(
+    --navy-blue-modal
+  ); /* Yarı şeffaf arka plan (backdrop) rengi. */
   justify-content: center; /* Flexbox ile yatayda içeriği ortalar. */
   align-items: center; /* Flexbox ile dikeyde içeriği ortalar. */
   z-index: 1000; /* Diğer öğelerin üzerinde görünmesini sağlar. */
@@ -240,7 +254,9 @@ body {
   height: 584px; /* Sabit yükseklik. */
   margin-top: 40px; /* Üstten dış boşluk (bu, dikey ortalamayı bir miktar bozabilir). */
   box-sizing: border-box; /* Padding ve border'ın elementin toplam genişliğine dahil olmasını sağlar. */
-  transform: translateY(-50px); /* Başlangıçta içeriği dikeyde 50px yukarı kaydırır (giriş animasyonu için). */
+  transform: translateY(
+    -50px
+  ); /* Başlangıçta içeriği dikeyde 50px yukarı kaydırır (giriş animasyonu için). */
   transition: transform 0.3s ease-out; /* Transformasyon değişimine yumuşak geçiş efekti. */
 }
 
@@ -270,7 +286,9 @@ body {
 
 .close-button:hover,
 .close-button:focus {
-  color: var(--white); /* Fare üzerine gelince veya odaklanınca metin rengi beyaz. */
+  color: var(
+    --white
+  ); /* Fare üzerine gelince veya odaklanınca metin rengi beyaz. */
   background-color: var(--ocean); /* Arka plan rengi ocean olur. */
 }
 
@@ -343,7 +361,9 @@ body {
   position: absolute; /* Mutlak konumlandırma. */
   left: 16px; /* Soldan 16px içeride konumlandırır. */
   top: 40%; /* Üstten %40'ta konumlandırır (wrapper yüksekliğine göre). */
-  transform: translateY(-50%); /* Kendi yüksekliğinin yarısı kadar yukarı kaydırarak dikeyde ortalar. */
+  transform: translateY(
+    -50%
+  ); /* Kendi yüksekliğinin yarısı kadar yukarı kaydırarak dikeyde ortalar. */
   width: 12px; /* Genişlik. */
   height: 12px; /* Yükseklik. */
   fill: var(--navy-blue); /* İkon rengi lacivert. */
@@ -450,13 +470,15 @@ body {
 
 .send-button:hover,
 .send-button:focus {
-  background-color: var(--ocean); /* Fare üzerine gelince veya odaklanınca arka plan rengi ocean olur. */
+  background-color: var(
+    --ocean
+  ); /* Fare üzerine gelince veya odaklanınca arka plan rengi ocean olur. */
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); /* Daha belirgin gölge efekti. */
 }
 /* ===================== MODAL END ===================== */
 
 /* ===================== ICON BOX START ===================== */
-/* İkon kutuları bölümünün stil tanımlamaları. */
+
 .box {
   background-color: var(--cloud); /* Arka plan rengi cloud. */
   height: 112px; /* Sabit yükseklik. */
@@ -476,7 +498,7 @@ body {
 /* ===================== ICON BOX END ===================== */
 
 /* ===================== SECTION 1 START ===================== */
-/* İlk içerik bölümünün stil tanımlamaları. */
+
 .section1 .container {
   display: flex; /* İçeriği esnek kutu modeliyle düzenler. */
   flex-wrap: wrap; /* İçeriğin alt satıra geçmesini sağlar. */
@@ -521,7 +543,7 @@ body {
 /* ===================== SECTION 1 END ===================== */
 
 /* ===================== OUR TEAM START ===================== */
-/* Ekibimiz bölümünün stil tanımlamaları. */
+
 .our-team {
   background-color: var(--cloud); /* Arka plan rengi cloud. */
   width: 100vw; /* Görünüm penceresinin tam genişliğini kaplar. */
@@ -612,13 +634,14 @@ body {
   transition: fill 0.3s ease; /* Renk değişimine yumuşak geçiş efekti. */
 }
 .icon-wrapper:hover {
-  background-color: var(--ocean); /* Fare üzerine gelince arka plan rengi ocean olur. */
+  background-color: var(
+    --ocean
+  ); /* Fare üzerine gelince arka plan rengi ocean olur. */
 }
 
 /* ===================== OUR TEAM END ===================== */
 
 /* ===================== OUR PORTFOLIO START ===================== */
-/* Portföy bölümünün stil tanımlamaları. */
 
 .our-portfolio {
   width: 100%; /* Tam genişlik. */
@@ -733,7 +756,7 @@ body {
 /* ===================== OUR PORTFOLIO END ===================== */
 
 /* ===================== FOOTER START ===================== */
-/* Sayfa altbilgisinin genel stil tanımlamaları. */
+
 footer {
   background-color: var(--navy-blue); /* Arka plan rengi lacivert. */
   width: 100%; /* Tam genişlik. */
@@ -781,7 +804,7 @@ footer .container {
 /* ===================== FOOTER END ===================== */
 
 /* ===================== FOOTER SOCIAL START ===================== */
-/* Altbilgideki sosyal medya ikonlarının stil tanımlamaları. */
+
 .footer .social-icons {
   gap: 16px; /* İkonlar arasında 16px boşluk. */
 }
@@ -824,7 +847,6 @@ footer .container {
 /* ===================== FOOTER SOCIAL END ===================== */
 
 /* ===================== FOOTER EMAIL INPUT START ===================== */
-/* Altbilgideki e-posta abonelik formunun stil tanımlamaları. */
 
 form {
   width: 453px; /* Formun sabit genişliği. */
@@ -865,7 +887,8 @@ form {
 }
 
 .footer .email-input input::placeholder {
-  /* width, height, position ve left özellikleri placeholder metni için genellikle etkisizdir. */
+  position: absolute;
+  left: 15px;
   color: var(--white); /* Placeholder metin rengi beyaz. */
   font-size: 12px; /* Font boyutu. */
   font-weight: 400; /* Font kalınlığı. */
@@ -880,7 +903,7 @@ form {
   color: var(--white); /* Metin rengi beyaz. */
   border-radius: 4px; /* Köşe yuvarlatması. */
   border: none; /* Kenarlığı kaldırır. */
-  font-weight: 400; /* Font kalınlığı. */
+  font-weight: 500; /* Font kalınlığı. */
   font-size: 16px; /* Font boyutu. */
   cursor: pointer; /* Fare imleci üzerine gelince işaretçi olur. */
   display: flex; /* İçindeki ikon ve metni hizalamak için esnek kutu modeli. */
@@ -891,11 +914,13 @@ form {
   margin-top: 25px; /* Üstten dış boşluk. */
   padding: 8px 24px; /* İç boşluk (top/bottom 8px, left/right 24px). */
   margin-left: 10px; /* Soldan dış boşluk. */
+  letter-spacing: 0.4px;
+  line-height: 24px;
 }
 
 .footer button svg.icon {
-  width: 16px; /* İkon genişliği. */
-  height: 16px; /* İkon yüksekliği. */
+  width: 24px; /* İkon genişliği. */
+  height: 24px; /* İkon yüksekliği. */
   fill: currentColor; /* İkon rengini, üst elementin (butonun) metin rengiyle aynı yapar. */
 }
 /* ===================== FOOTER EMAIL INPUT END ===================== */
