@@ -51,7 +51,7 @@ body {
 /* ===================== NAVBAR START ===================== */
 
 .navbar-wrapper {
-  width: 1550px !important; /* Navigasyon çubuğunun genişliğini sabitler ve !important ile diğer kuralları geçersiz kılar (genellikle tavsiye edilmez). */
+  width: 1550px; /* Navigasyon çubuğunun genişliğini sabitler. */
   height: 72px; /* Sabit yükseklik. */
   padding-left: 80px; /* Navigasyon içeriğinin soldan iç boşluğu. */
   position: absolute; /* Elementi normal belge akışından çıkarır ve belirli bir konuma yerleştirir. */
